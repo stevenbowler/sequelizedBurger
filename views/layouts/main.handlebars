@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cowboy Burger</title>
+
+  {{!-- <link rel="stylesheet" type="text/css" href="../../public/assets/css/reset.css"> --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  {{!-- <link rel="stylesheet" href="../../public/assets/css/burger_style.css" type="text/css"> --}}
+
+  <style>
+    html,
+    body,
+    main {
+      background-color: black;
+    }
+  </style>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+  <!-- Font Awesome Glyphicons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+
+  {{!-- <script src="https://code.jquery.com/jquery.js"></script> --}}
+</head>
+
+<body style="background-color: black; color:white;">
+  <div id=navheader>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark text-white bg-dark">
+      <a class="navbar-brand" href="https://github.com/stevenbowler">Cowboy Burger</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <!-- <li class="nav-item active">
+                        <a class="nav-link" roll="button" inactive>Start Game</a>
+                    </li> -->
+          <li class="nav-item">
+            <a class="nav-link" roll="button"
+              href="https://drive.google.com/file/d/1Kyg4pH1CS2qgeg0UL-o6Z4PXpzuNhe-v/view">Game
+              Tutorial</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Documentation
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="https://stevenbowler.github.io/FriendFinder/docs/index.html">Home JS
+                Docs</a>
+              <a class="dropdown-item" href="https://stevenbowler.github.io/FriendFinder/docs/global.html">Globals</a>
+              <div class="dropdown-divider"></div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/stevenbowler/FriendFinder" tabindex="-1"
+              aria-disabled="true">Github Repo</a>
+          </li>
+        </ul>
+        <form id="googleSearchForm" class="form-inline my-2 my-lg-0" target="blank"
+          action="https://github.com/stevenbowler/FriendFinder/search?">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search Repository" aria-label="Search"
+            id="googlesearch" name="q">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchButton">Search</button>
+
+        </form>
+      </div>
+    </nav>
+  </div>
+
+
+
+
+
+  {{{ body }}}
+</body>
+
+</html>

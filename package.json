@@ -1,0 +1,29 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "Restaurant Menu App",
+  "main": "server.js",
+  "scripts": {
+    "doc": "jsdoc -c jsdoc.json -R README.md",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevenbowler/burger.git"
+  },
+  "author": "Steven Bowler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stevenbowler/burger/issues"
+  },
+  "homepage": "https://github.com/stevenbowler/burger#readme",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.3",
+    "jsdoc": "^3.6.4",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.3"
+  }
+}
