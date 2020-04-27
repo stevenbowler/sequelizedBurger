@@ -1,13 +1,15 @@
 # burger
-Restaurant Menu App
+Restaurant Order App
 
 ### Overview
-This is a restaurant menu app that enables the user to build their own burger from a list of pre-determined options.   This program was developed by Steven Bowler for the purpose of gaining experience in creating and deploying a functional app on Heroku, building a full-stack app integrating [Express-Handlebars](https://www.npmjs.com/package/express-handlebars), [ExpressJS](https://www.npmjs.com/package/express), [MySQL](https://www.npmjs.com/package/mysql).  The project has also afforded this programmer the opportunity to develop practical skills in the use of [nodemailer](https://www.npmjs.com/package/nodemailer), to send emails from an app deployed on [Heroku](https://www.heroku.com).  `Enjoy`.
+This is a restaurant order-tracking app that enables the customer to `create` their own order, in this case a burger; `read` the status of the order; `update` the contents and/or status of the order; and finally, `delete` the order - in other words, all of the CRUD operations are represented.   This program was developed by Steven Bowler for the purpose of gaining experience developing a full-stack app employing best-practices for executing the [Model-View-Control](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) (MVC) software development pattern.  Additionally, the project provides this programmer the opportunity develop skills in creating and deploying a functional full-stack app on [Heroku](https://www.heroku.com), integrating [Express-Handlebars](https://www.npmjs.com/package/express-handlebars), [ExpressJS](https://www.npmjs.com/package/express), and [MySQL](https://www.npmjs.com/package/mysql). `Enjoy`.
 
 
 ### User Documentation
 
-First, watch this video: _*[burger](https://drive.google.com/file/d/1Kyg4pH1CS2qgeg0UL-o6Z4PXpzuNhe-v/view)*_
+First, watch this video: _*[burger](https://drive.google.com/file/d/1Kyg4pH1CS2qgeg0UL-o6Z4PXpzuNhe-v/view)*_.
+
+Then, read the instructions and see the clips below
 
 To use the app click [burger](https://intense-ravine-38720.herokuapp.com/)
 1. From the home page click the `Order` button
@@ -17,7 +19,7 @@ To use the app click [burger](https://intense-ravine-38720.herokuapp.com/)
     3. Enter an `email address`. *Provide valid email to receive contact info regarding your soulmate match via email.*
     4. Respond to the 10 required questions
     5. Click `Submit` button
-3. Rejoice - you have found your soulmate
+3. 
 
 
 ### Program Documentation
