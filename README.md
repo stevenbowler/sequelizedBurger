@@ -65,7 +65,7 @@ Directory structure is as follows:
 │       ├── css
 │       │   └── burger_style.css
 │       └── img
-│       │   └── burger_style.css
+│       │   └── burger.png
 │       └── js
 │           └── burgers.js
 │

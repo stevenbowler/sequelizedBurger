@@ -7,6 +7,7 @@
 
 /**
  * @name mysql
+ * @external
  */
 var mysql = require("mysql");
 
