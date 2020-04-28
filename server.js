@@ -1,7 +1,26 @@
+//@ts-check
+/**
+ * @module
+ * @requires express
+ * @requires express-handlebars
+ * @requires module:controllers/burgers_controller
+ */
+
+/**
+ * ExpressJS package
+ * @name express
+ */
 var express = require("express");
 
+/**
+ * @name PORT
+ */
 var PORT = process.env.PORT || 8080;
 
+/**
+ * app reference for express()
+ * @name app
+ */
 var app = express();
 
 // Serve static content for the app from the "public" directory in the application directory.

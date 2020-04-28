@@ -1,22 +1,19 @@
 //@ts-check
 /**
  * @module
+ * @requires module:config/connection
  */
 
 /**
  * Import MySQL connection
- * @requires connection
+ * @name connection
  */
 var connection = require("./connection");
 
 
-// Helper function for SQL syntax.
-// Let's say we want to pass 3 values into the mySQL query.
-// In order to write the query, we need 3 question marks.
-// The above helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string.
-// ["?", "?", "?"].toString() => "?,?,?";
 /**
- * 
+ * Loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string. 
+ * ["?", "?", "?"].toString() => "?,?,?";
  * @param {number} num 
  */
 function printQuestionMarks(num) {
@@ -33,7 +30,7 @@ function printQuestionMarks(num) {
 /**
  * Helper function to convert object key/value pairs to SQL syntax
  * @function objToSql
- * @param {*} ob
+ * @param {object} ob
  * @returns {string} 
  */
 function objToSql(ob) {
@@ -53,28 +50,26 @@ function objToSql(ob) {
             arr.push(key + "=" + value);
         }
     }
-
     // translate array of strings to a single comma-separated string
     return arr.toString();
 }
 
 /**
  * Object for all our SQL statement functions.
- * @name orm
+ * @namespace orm
  * @type {object}
  * 
 */
 var orm = {
     /**
      * Selects all records in the table and returns them
-     * @function orm.selectAll
-     * @memberof config/orm
+     * @memberof module:config/orm~orm
      * @inner
-     * @param {*} tableInput 
-     * @param {*} cb 
+     * @param {string} table table name within MySQL
+     * @param {function} cb Callback with result from MySQL query
      */
-    selectAll: function (tableInput, cb) {
-        var queryString = "SELECT * FROM " + tableInput + ";";
+    selectAll: function (table, cb) {
+        var queryString = "SELECT * FROM " + table + ";";
         connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
@@ -84,12 +79,12 @@ var orm = {
     },
     /**
      * Inserts new record into table
-     * @function orm.insertOne
+     * @memberof module:config/orm~orm
      * @inner
-     * @param {*} table 
-     * @param {*} cols 
-     * @param {*} vals 
-     * @param {*} cb 
+     * @param {string} table 
+     * @param {Array<string>} cols Array with string values of columns to modify 
+     * @param {Array<string>} vals Array with string values to be updated in columns
+     * @param {function} cb Callback returns result object from MySQL query
      */
     insertOne: function (table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
@@ -114,12 +109,12 @@ var orm = {
     // 
     /**
      * Updates one table column values based on condition (such as id=2), then callback
-     * @function orm.updateOne
+     * @memberof module:config/orm~orm
      * @inner
-     * @param {*} table 
-     * @param {*} objColVals 
-     * @param {*} condition 
-     * @param {*} cb 
+     * @param {string} table Table to be used in MySQL update
+     * @param {object} objColVals Object with column/value pairs to be updated
+     * @param {string} condition id=? reference to table index in MySQL
+     * @param {function} cb Callback with result from MySQL query
      */
     updateOne: function (table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
@@ -141,12 +136,12 @@ var orm = {
     // Created by Steven Bowler to add to orm functions, deleteOne function completes CRUD in orm.js
     //     connection.query("DELETE FROM plans WHERE id = ?", [req.params.id], function (err, result) {
     /**
-     * @function orm.deleteOne
+     * @memberof module:config/orm~orm
      * @inner
-     * @param {*} table 
-     * @param {*} objColVals 
-     * @param {*} condition 
-     * @param {*} cb 
+     * @param {string} table Table name in MySQL database 
+     * @param {object} objColVals Object with column name/value pairs 
+     * @param {string} condition id=? reference to index in table
+     * @param {function} cb Callback to return result
      */
     deleteOne: function (table, objColVals, condition, cb) {
         var queryString = "DELETE FROM " + table;

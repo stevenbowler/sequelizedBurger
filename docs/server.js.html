@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: models/burger</title>
+    <title>JSDoc: Source: server.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,127 +17,71 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: models/burger</h1>
+    <h1 class="page-title">Source: server.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//@ts-check
+/**
+ * @module
+ * @requires express
+ * @requires express-handlebars
+ * @requires module:controllers/burgers_controller
+ */
 
-<article>
-    <div class="container-overview">
-    
-        
+/**
+ * ExpressJS package
+ * @name express
+ */
+var express = require("express");
 
-        
-    
-    </div>
+/**
+ * @name PORT
+ */
+var PORT = process.env.PORT || 8080;
 
-    
+/**
+ * app reference for express()
+ * @name app
+ */
+var app = express();
 
-    
-        <h3 class="subsection-title">Requires</h3>
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
 
-        <ul>
-            <li><a href="module-config_orm.html">module:config/orm</a></li>
-        </ul>
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Namespaces</h3>
-
-        <dl>
-            <dt><a href="module-models_burger.burger.html">burger</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="~orm"><span class="type-signature">(inner) </span>orm<span class="type-signature"></span></h4>
+// Parse application body
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static("public"));
 
 
+// Set Handlebars.
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+// Import routes and give the server access to them.
+var routes = require("./controllers/burgers_controller.js");
+
+app.use(routes);
+
+// app.use('/api', apiRoutes);   // example from FriendFinder
 
 
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_burger.js.html">models/burger.js</a>, <a href="models_burger.js.html#line7">line 7</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+// Start our server so that it can begin listening to client requests.
+app.listen(PORT, function () {
+    // Log (server-side) when our server has started
+    console.log("Server listening on: http://localhost:" + PORT);
+});
+</code></pre>
+        </article>
+    </section>
 
 
 

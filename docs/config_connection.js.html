@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: models/burger</title>
+    <title>JSDoc: Source: config/connection.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,127 +17,58 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: models/burger</h1>
+    <h1 class="page-title">Source: config/connection.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//@ts-check
+/**
+ * Connection to MySQL database in Heroku or local
+ * @module
+ * @requires mysql https://www.npmjs.com/package/mysql Node.js package
+ */
 
-<article>
-    <div class="container-overview">
-    
-        
+/**
+ * @name mysql
+ */
+var mysql = require("mysql");
 
-        
-    
-    </div>
+/**
+ * @name connection
+ */
+var connection;
 
-    
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+    connection = mysql.createConnection({
+        host: "localhost",
+        port: 3306,
+        user: "root",
+        password: "",
+        database: "burgers_db"
+    });
+}
 
-    
-        <h3 class="subsection-title">Requires</h3>
+// Make connection.
+connection.connect(function (err) {
+    if (err) {
+        console.error("error connecting: " + err.stack);
+        return;
+    }
+    console.log("connected as id " + connection.threadId);
+});
 
-        <ul>
-            <li><a href="module-config_orm.html">module:config/orm</a></li>
-        </ul>
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Namespaces</h3>
-
-        <dl>
-            <dt><a href="module-models_burger.burger.html">burger</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="~orm"><span class="type-signature">(inner) </span>orm<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_burger.js.html">models/burger.js</a>, <a href="models_burger.js.html#line7">line 7</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+// Export connection for our ORM to use.
+module.exports = connection;
+</code></pre>
+        </article>
+    </section>
 
 
 

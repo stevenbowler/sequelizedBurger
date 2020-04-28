@@ -2,7 +2,7 @@
 /**
  * @module
  * @requires express
- * @requires burger
+ * @requires module:models/burger
  */
 
 

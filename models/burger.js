@@ -1,11 +1,11 @@
 //@ts-check
 /**
  * @module
+ * @requires module:config/orm
  */
 
 /**
- * Import the ORM to create function that will interact with the database.
- * @requires orm
+ * @name orm
  */
 var orm = require("../config/orm");
 

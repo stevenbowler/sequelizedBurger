@@ -1,5 +1,18 @@
-// Set up MySQL connection.
+//@ts-check
+/**
+ * Connection to MySQL database in Heroku or local
+ * @module
+ * @requires mysql https://www.npmjs.com/package/mysql Node.js package
+ */
+
+/**
+ * @name mysql
+ */
 var mysql = require("mysql");
+
+/**
+ * @name connection
+ */
 var connection;
 
 if (process.env.JAWSDB_URL) {

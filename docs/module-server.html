@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: config/orm</title>
+    <title>JSDoc: Module: server</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: config/orm</h1>
+    <h1 class="page-title">Module: server</h1>
 
     
 
@@ -47,7 +47,11 @@
         <h3 class="subsection-title">Requires</h3>
 
         <ul>
-            <li><a href="module-config_connection.html">module:config/connection</a></li>
+            <li>module:express</li>
+        
+            <li>module:express-handlebars</li>
+        
+            <li><a href="module-controllers_burgers_controller.html">module:controllers/burgers_controller</a></li>
         </ul>
     
 
@@ -58,26 +62,19 @@
     
 
     
-        <h3 class="subsection-title">Namespaces</h3>
-
-        <dl>
-            <dt><a href="module-config_orm-orm.html">orm</a></dt>
-            <dd></dd>
-        </dl>
-    
 
     
         <h3 class="subsection-title">Members</h3>
 
         
             
-<h4 class="name" id="~connection"><span class="type-signature">(inner) </span>connection<span class="type-signature"></span></h4>
+<h4 class="name" id="~app"><span class="type-signature">(inner) </span>app<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>Import MySQL connection</p>
+    <p>app reference for express()</p>
 </div>
 
 
@@ -115,7 +112,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="config_orm.js.html">config/orm.js</a>, <a href="config_orm.js.html#line7">line 7</a>
+        <a href="server.js.html">server.js</a>, <a href="server.js.html#line20">line 20</a>
     </li></ul></dd>
     
 
@@ -132,83 +129,16 @@
 
 
         
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
             
+<h4 class="name" id="~express"><span class="type-signature">(inner) </span>express<span class="type-signature"></span></h4>
 
-    
-
-    
-    <h4 class="name" id="~objToSql"><span class="type-signature">(inner) </span>objToSql<span class="signature">(ob)</span><span class="type-signature"> &rarr; {string}</span></h4>
-    
-
-    
 
 
 
 <div class="description">
-    <p>Helper function to convert object key/value pairs to SQL syntax</p>
+    <p>ExpressJS package</p>
 </div>
 
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>ob</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -244,7 +174,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="config_orm.js.html">config/orm.js</a>, <a href="config_orm.js.html#line30">line 30</a>
+        <a href="server.js.html">server.js</a>, <a href="server.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -260,111 +190,13 @@
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
         
             
-
-    
-
-    
-    <h4 class="name" id="~printQuestionMarks"><span class="type-signature">(inner) </span>printQuestionMarks<span class="signature">(num)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Loops through and creates an array of question marks - [&quot;?&quot;, &quot;?&quot;, &quot;?&quot;] - and turns it into a string.
-[&quot;?&quot;, &quot;?&quot;, &quot;?&quot;].toString() =&gt; &quot;?,?,?&quot;;</p>
-</div>
+<h4 class="name" id="~PORT"><span class="type-signature">(inner) </span>PORT<span class="type-signature"></span></h4>
 
 
 
 
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>num</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -400,7 +232,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="config_orm.js.html">config/orm.js</a>, <a href="config_orm.js.html#line19">line 19</a>
+        <a href="server.js.html">server.js</a>, <a href="server.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -416,21 +248,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         
+    
+
     
 
     

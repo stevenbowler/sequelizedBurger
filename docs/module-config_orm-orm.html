@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: burger</title>
+    <title>JSDoc: Namespace: orm</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: burger</h1>
+    <h1 class="page-title">Namespace: orm</h1>
 
     
 
@@ -29,7 +29,7 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="module-models_burger.html">models/burger</a>.</span>burger</h2>
+            <span class="ancestors"><a href="module-config_orm.html">config/orm</a>~</span>orm</h2>
         
     
 </header>
@@ -37,6 +37,8 @@
 <article>
     <div class="container-overview">
     
+        
+            <div class="description"><p>Object for all our SQL statement functions.</p></div>
         
 
         
@@ -71,7 +73,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_burger.js.html">models/burger.js</a>, <a href="models_burger.js.html#line12">line 12</a>
+        <a href="config_orm.js.html">config/orm.js</a>, <a href="config_orm.js.html#line57">line 57</a>
     </li></ul></dd>
     
 
@@ -110,16 +112,12 @@
     
 
     
-    <h4 class="name" id=".deleteOne"><span class="type-signature">(static) </span>deleteOne<span class="signature">(objColVals, condition, cb)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~deleteOne"><span class="type-signature">(inner) </span>deleteOne<span class="signature">(table, objColVals, condition, cb)</span><span class="type-signature"></span></h4>
     
 
     
 
 
-
-<div class="description">
-    <p>Delete one record from table where condition is met</p>
-</div>
 
 
 
@@ -154,6 +152,29 @@
 
         <tr>
             
+                <td class="name"><code>table</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Table name in MySQL database</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>objColVals</code></td>
             
 
@@ -170,7 +191,7 @@
 
             
 
-            <td class="description last"><p>Object with column name/key and value to be deleted</p></td>
+            <td class="description last"><p>Object with column name/value pairs</p></td>
         </tr>
 
     
@@ -193,7 +214,7 @@
 
             
 
-            <td class="description last"><p>String that follows &quot;WHERE&quot; in MySQL query</p></td>
+            <td class="description last"><p>id=? reference to index in table</p></td>
         </tr>
 
     
@@ -216,7 +237,7 @@
 
             
 
-            <td class="description last"><p>Callback with response from MySQL query</p></td>
+            <td class="description last"><p>Callback to return result</p></td>
         </tr>
 
     
@@ -257,7 +278,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_burger.js.html">models/burger.js</a>, <a href="models_burger.js.html#line58">line 58</a>
+        <a href="config_orm.js.html">config/orm.js</a>, <a href="config_orm.js.html#line146">line 146</a>
     </li></ul></dd>
     
 
@@ -293,7 +314,7 @@
     
 
     
-    <h4 class="name" id=".insertOne"><span class="type-signature">(static) </span>insertOne<span class="signature">(cols, vals, cb)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~insertOne"><span class="type-signature">(inner) </span>insertOne<span class="signature">(table, cols, vals, cb)</span><span class="type-signature"></span></h4>
     
 
     
@@ -301,7 +322,7 @@
 
 
 <div class="description">
-    <p>Inserts one record in table, the variables cols and vals are arrays.</p>
+    <p>Inserts new record into table</p>
 </div>
 
 
@@ -337,6 +358,29 @@
 
         <tr>
             
+                <td class="name"><code>table</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>cols</code></td>
             
 
@@ -353,7 +397,7 @@
 
             
 
-            <td class="description last"><p>Array of columns in burgers table</p></td>
+            <td class="description last"><p>Array with string values of columns to modify</p></td>
         </tr>
 
     
@@ -376,7 +420,7 @@
 
             
 
-            <td class="description last"><p>Array of values in burgers table</p></td>
+            <td class="description last"><p>Array with string values to be updated in columns</p></td>
         </tr>
 
     
@@ -399,7 +443,7 @@
 
             
 
-            <td class="description last"><p>Callback with response from MySQL query</p></td>
+            <td class="description last"><p>Callback returns result object from MySQL query</p></td>
         </tr>
 
     
@@ -440,7 +484,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_burger.js.html">models/burger.js</a>, <a href="models_burger.js.html#line34">line 34</a>
+        <a href="config_orm.js.html">config/orm.js</a>, <a href="config_orm.js.html#line89">line 89</a>
     </li></ul></dd>
     
 
@@ -476,7 +520,7 @@
     
 
     
-    <h4 class="name" id=".selectAll"><span class="type-signature">(static) </span>selectAll<span class="signature">(cb)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~selectAll"><span class="type-signature">(inner) </span>selectAll<span class="signature">(table, cb)</span><span class="type-signature"></span></h4>
     
 
     
@@ -484,7 +528,7 @@
 
 
 <div class="description">
-    <p>Selects all records in table burgers and returns them</p>
+    <p>Selects all records in the table and returns them</p>
 </div>
 
 
@@ -520,6 +564,29 @@
 
         <tr>
             
+                <td class="name"><code>table</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>table name within MySQL</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>cb</code></td>
             
 
@@ -536,7 +603,7 @@
 
             
 
-            <td class="description last"><p>Callback with response from MySQL query</p></td>
+            <td class="description last"><p>Callback with result from MySQL query</p></td>
         </tr>
 
     
@@ -577,7 +644,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_burger.js.html">models/burger.js</a>, <a href="models_burger.js.html#line22">line 22</a>
+        <a href="config_orm.js.html">config/orm.js</a>, <a href="config_orm.js.html#line71">line 71</a>
     </li></ul></dd>
     
 
@@ -613,7 +680,7 @@
     
 
     
-    <h4 class="name" id=".updateOne"><span class="type-signature">(static) </span>updateOne<span class="signature">(objColVals, condition, cb)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~updateOne"><span class="type-signature">(inner) </span>updateOne<span class="signature">(table, objColVals, condition, cb)</span><span class="type-signature"></span></h4>
     
 
     
@@ -621,7 +688,7 @@
 
 
 <div class="description">
-    <p>Updates one record in table in columns specified based on condition</p>
+    <p>Updates one table column values based on condition (such as id=2), then callback</p>
 </div>
 
 
@@ -653,6 +720,29 @@
     </thead>
 
     <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>table</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Table to be used in MySQL update</p></td>
+        </tr>
+
     
 
         <tr>
@@ -673,7 +763,7 @@
 
             
 
-            <td class="description last"><p>Object with column name/key and value to be updated</p></td>
+            <td class="description last"><p>Object with column/value pairs to be updated</p></td>
         </tr>
 
     
@@ -696,7 +786,7 @@
 
             
 
-            <td class="description last"><p>String that follows &quot;WHERE&quot; in MySQL query</p></td>
+            <td class="description last"><p>id=? reference to table index in MySQL</p></td>
         </tr>
 
     
@@ -719,7 +809,7 @@
 
             
 
-            <td class="description last"><p>Callback with response from MySQL query</p></td>
+            <td class="description last"><p>Callback with result from MySQL query</p></td>
         </tr>
 
     
@@ -760,7 +850,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_burger.js.html">models/burger.js</a>, <a href="models_burger.js.html#line46">line 46</a>
+        <a href="config_orm.js.html">config/orm.js</a>, <a href="config_orm.js.html#line119">line 119</a>
     </li></ul></dd>
     
 
