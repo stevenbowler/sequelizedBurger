@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: burger</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">burger</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>burger</h1>
+<p>Restaurant Order App</p>
+<h3>Overview</h3>
+<p>This is a restaurant order-tracking app that enables the customer to <em><em><code>create</code></em></em> their own order, in this case a burger; <em><em><code>read</code></em></em> the status of the order; <em><em><code>update</code></em></em> the contents and/or status of the order; and finally, <em><em><code>delete</code></em></em> the order - in other words, all of the CRUD operations are represented.   This program was developed by Steven Bowler for the purpose of gaining experience developing a full-stack app employing best-practices for executing the <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">Model-View-Control</a> (MVC) software development pattern.  Additionally, the project provides this programmer the opportunity develop skills in creating and deploying a functional full-stack app on <a href="https://www.heroku.com">Heroku</a>, integrating <a href="https://www.npmjs.com/package/express-handlebars">Express-Handlebars</a>, <a href="https://www.npmjs.com/package/express">ExpressJS</a>, and <a href="https://www.npmjs.com/package/mysql">MySQL</a>. <em><em><code>Enjoy</code></em></em>.</p>
+<h3>User Documentation</h3>
+<p>First, watch this video: <em><em><a href="https://drive.google.com/file/d/1aaV586emAS9yznHqatfBParYsV_apiiC/view">burger</a></em></em>.</p>
+<p>Then, read the instructions and see the clips below</p>
+<p>To use the app click <a href="https://vast-ridge-32092.herokuapp.com/">burger</a></p>
+<ol>
+<li>To create a burger: Under the <em><em><code>Create a Burger</code></em></em> heading, enter the name of the burger you desire in the text box and click the  <em><em><code>Create Burger</code></em></em> button.</li>
+<li>The name of the burger just created will be read into the bottom of the <em><em><code>To Be Devoured</code></em></em> list.</li>
+<li>To update the name of the burger: Under the <em><em><code>Update a Burger</code></em></em> heading,
+<ol>
+<li>From the dropdown: select the burger name you wish to update</li>
+<li>In the textbox to the right of the dropdown: type in the new burger name.</li>
+<li>Click the <em><em><code>Update a Burger</code></em></em> button.</li>
+</ol>
+</li>
+<li>To update the status of any burger from <em><em><code>To Be Devoured</code></em></em> to <em><em><code>Devoured</code></em></em>: click the <em><em><code>Devour Burger</code></em></em> button to the right.</li>
+<li>To delete the burger: Under the <em><em><code>Devoured</code></em></em> heading: click the <em><em><code>Delete Burger</code></em></em> button to the right of the burger to be deleted.</li>
+</ol>
+<h3>Program Documentation</h3>
+<p>App executes the MVC software pattern in the following manner:</p>
+<ol>
+<li>Initiate <em><em><code>server.js</code></em></em></li>
+<li>Serve <em><em><code>index.handlebars</code></em></em> with current burgers table from burgers_db in MySQL/Heroku JawsDB.</li>
+<li>User onclick event triggers one of four actions: Create Burger, Update Burger, Devour Burger, Delete Burger. See module <a href="https://stevenbowler.github.io/burger/docs/module-public_assets_js_burgers.html">public/assets/js/burgers</a>.  This makes the AJAX call with the appropriate route.</li>
+<li><em><em><code>public/assets/js/burgers</code></em></em> JQuery based user input module requires <a href="https://stevenbowler.github.io/burger/docs/module-controllers_burgers_controller.html">controllers/burgers_controller</a>.</li>
+<li><em><em><code>controllers/burgers_controller</code></em></em> module is the router that requires <a href="https://stevenbowler.github.io/burger/docs/module-models_burger.html">models/burger</a> to make <em><em><code>burger</code></em></em> specific calls to MySQL.</li>
+<li><em><em><code>models/burger</code></em></em> module formats parameters in the correct MySQL query format and requires the generic MySQL functions in <a href="https://stevenbowler.github.io/burger/docs/module-config_orm.html">config/orm</a>.</li>
+</ol>
+<p>Main module documentation and references can be accessed <a href="https://stevenbowler.github.io/burger/docs/index.html">here</a>.  Global scope variables can be accessed <a href="https://stevenbowler.github.io/burger/docs/global.html">here</a>,</p>
+<p>Deploy app thru <a href="https://www.heroku.com">Heroku</a> with JawsDB.  <a href="https://www.youtube.com/watch?v=btG3SkoNOLU&amp;feature=youtu.be&amp;list=PLOFmg4xbN_TPrB6w4rThsFanVxJI_SfER">Watch this video</a>.</p>
+<p>Directory structure is as follows:</p>
+<pre class="prettyprint source"><code>.
+├── config
+│   ├── connection.js
+│   └── orm.js
+│ 
+├── controllers
+│   └── burgers_controller.js
+│
+├── db
+│   ├── schema.sql
+│   └── seeds.sql
+│
+├── docs
+│
+├── models
+│   └── burger.js
+│ 
+├── node_modules
+│ 
+├── package.json
+│
+├── public
+│   └── assets
+│       ├── css
+│       │   └── burger_style.css
+│       └── img
+│       │   └── burger_style.css
+│       └── js
+│           └── burgers.js
+│
+├── server.js
+│
+└── views
+    ├── index.handlebars
+    └── layouts
+        └── main.handlebars
+</code></pre></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">burger</a></h2><h3>Modules</h3><ul><li><a href="module-config_orm.html">config/orm</a></li><li><a href="module-controllers_burgers_controller.html">controllers/burgers_controller</a></li><li><a href="module-models_burger.html">models/burger</a></li><li><a href="module-public_assets_js_burgers.html">public/assets/js/burgers</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-models_burger.burger.html">burger</a></li></ul><h3>Events</h3><ul><li><a href="module-public_assets_js_burgers.html#.event:deleteburger">deleteburger</a></li><li><a href="module-public_assets_js_burgers.html#.event:devourburger">devourburger</a></li><li><a href="module-public_assets_js_burgers.html#event:createburger">createburger</a></li><li><a href="module-public_assets_js_burgers.html#event:updateburger">updateburger</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Tue Apr 28 2020 11:26:05 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
