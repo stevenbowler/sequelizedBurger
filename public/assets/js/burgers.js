@@ -1,6 +1,7 @@
 //@ts-check
 /**
  * @module
+ * @todo eliminate //@ts-ignore three occurences 30apr2020
  */
 
 /**
@@ -70,6 +71,7 @@ $("#createburger").on("submit", function (event) {
 
     // [name=burger] will find an element with a "name" attribute equal to the string "burger"
     var newBurger = {
+        //@ts-ignore
         burger_name: $("#createburger [name=burger]").val().trim(),
         devoured: false
     };
@@ -102,10 +104,12 @@ $("#updateburger").on("submit", function (event) {
     event.preventDefault();
 
     // Get the ID by finding an element with a "name" attribute equal to the string "id"
+    //@ts-ignore
     var id = $("[name=id]").val().trim();
     console.log(`id ${id}`);
 
     var updatedBurger = {
+        //@ts-ignore
         burger_name: $("#updateburger [name=burger]").val().trim()
     };
     console.log(`updatedBurger ${updatedBurger}`);

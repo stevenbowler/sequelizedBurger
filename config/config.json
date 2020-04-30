@@ -3,7 +3,7 @@
         "host": "localhost",
         "username": "root",
         "password": "",
-        "database": "sequelizedBurgers_db",
+        "database": "burgers_db",
         "dialect": "mysql"
     },
     "test": {
