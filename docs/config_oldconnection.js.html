@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: External: mysql</title>
+    <title>JSDoc: Source: config/oldconnection.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,98 +17,59 @@
 
 <div id="main">
 
-    <h1 class="page-title">External: mysql</h1>
+    <h1 class="page-title">Source: config/oldconnection.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-            <span class="ancestors"><a href="module-config_oldconnection.html">config/oldconnection</a>~</span>mysql</h2>
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//@ts-check
+/**
+ * Connection to MySQL database in Heroku or local
+ * @module
+ * @requires mysql https://www.npmjs.com/package/mysql Node.js package
+ */
 
-<article>
-    <div class="container-overview">
-    
-        
+/**
+ * @name mysql
+ * @external
+ */
+var mysql = require("mysql");
 
-        
+/**
+ * @name connection
+ */
+var connection;
 
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+    connection = mysql.createConnection({
+        host: "localhost",
+        port: 3306,
+        user: "root",
+        password: "",
+        database: "sequelizedBurgers_db"
+    });
+}
 
-<dl class="details">
+// Make connection.
+connection.connect(function (err) {
+    if (err) {
+        console.error("error connecting: " + err.stack);
+        return;
+    }
+    console.log("connected as id " + connection.threadId);
+});
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="config_oldconnection.js.html">config/oldconnection.js</a>, <a href="config_oldconnection.js.html#line8">line 8</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+// Export connection for our ORM to use.
+module.exports = connection;
+</code></pre>
+        </article>
+    </section>
 
 
 

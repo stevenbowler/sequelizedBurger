@@ -1,4 +1,4 @@
-# burger
+# sequelizedBurger
 Restaurant Order App
 
 ### Overview

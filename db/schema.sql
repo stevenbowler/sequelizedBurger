@@ -21,23 +21,28 @@ To run this file, we do the following in our Terminal:
 */
 
 -- Drops the task_saver_db if it already exists --
-DROP DATABASE IF EXISTS burgers_db;
+DROP DATABASE IF EXISTS sequelizedBurgers_db;
 
 -- Create the database task_saver_db and specified it for use.
-CREATE DATABASE burgers_db;
+CREATE DATABASE sequelizedBurgers_db;
 
-USE burgers_db;
+USE sequelizedBurgers_db;
 
 -- Create the table tasks.
-CREATE TABLE burgers (
-  id int NOT NULL AUTO_INCREMENT,
-  burger_name varchar(255) NOT NULL,
+CREATE TABLE burgers
+(
+  id int NOT NULL
+  AUTO_INCREMENT,
+  burger_name varchar
+  (255) NOT NULL,
   devoured boolean,
-  PRIMARY KEY (id)
+  PRIMARY KEY
+  (id)
 );
 
--- Insert a set of records.
--- INSERT INTO movies (movie) VALUES ('get a hug from my wife.');
--- INSERT INTO movies (movie) VALUES ('get travelling.');
--- INSERT INTO movies (movie) VALUES ('get a hug from my daughter.');
- SELECT * FROM burgers;
+  -- Insert a set of records.
+  -- INSERT INTO movies (movie) VALUES ('get a hug from my wife.');
+  -- INSERT INTO movies (movie) VALUES ('get travelling.');
+  -- INSERT INTO movies (movie) VALUES ('get a hug from my daughter.');
+  SELECT *
+  FROM burgers;

@@ -5,6 +5,13 @@
  * @requires module:models/burger
  */
 
+// *********************************************************************************
+// api-routes.js - this file offers a set of routes for displaying and saving data to the db
+// *********************************************************************************
+
+// Dependencies
+// =============================================================
+
 
 /**
  * @name express
@@ -12,17 +19,22 @@
 var express = require("express");
 
 /**
- * @name burger
- */
-var burger = require("../models/burger");
-
-/**
  * @name router
  */
 var router = express();
 
+/**
+ * @name Burger
+ */
+var Burger = require("../models/burger.js");
+
+// Routes
+// =============================================================
 
 
+
+
+// Get all burgers
 
 /**
  * Basic route that sends the user first to the index.handlebars page with all MySQL records displayed
@@ -33,35 +45,15 @@ var router = express();
  * @returns {URL} Returns url to index.handlebars
  */
 router.get("/", function (req, res) {
-    burger.selectAll(function (data) {
+    Burger.findAll({}).then(function (results) {
         var hbsObject = {
-            burgers: data
+            burgers: results
         };
-        console.log(hbsObject);
-        res.render("index", hbsObject);
+        res.render("index", JSON.parse(JSON.stringify(hbsObject)));  // res.render("index", hbsObject); // doesn't work
+        // res.render("index", hbsObject); // doesn't work was used in non-sequelized version
     });
 });
 
-
-
-/**
- * create a new burger
- * @function
- * @name post/api/burgers
- * @memberof module:controllers/burgers_controller
- * @param {string} path - / to get you home.
- * @returns {sting} Returns unique insertID of record added to to MySQL
- */
-router.post("/api/burgers", function (req, res) {
-    burger.insertOne([
-        "burger_name", "devoured"
-    ], [
-        req.body.burger_name, req.body.devoured
-    ], function (result) {
-        // Send back the ID of the new quote
-        res.json({ id: result.insertId });
-    });
-});
 
 
 /**
@@ -73,21 +65,17 @@ router.post("/api/burgers", function (req, res) {
  * @returns {200 | 404} Returns status of request
  */
 router.put("/api/burgers/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
-
-    console.log("condition", condition);
-
-    burger.updateOne({
-        devoured: req.body.devoured
-    }, condition, function (result) {
-        if (result.changedRows == 0) {
-            // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
+    Burger.update({ devoured: req.body.devoured }, {
+        where: {
+            id: req.params.id
         }
+    }).then(function (results) {
+        console.log(results);
+        if (results == 0) res.status(404).end();
+        else res.status(200).end();
     });
 });
+
 
 
 /**
@@ -99,22 +87,39 @@ router.put("/api/burgers/:id", function (req, res) {
  * @returns {200 | 404} Returns status of request
  */
 router.put("/api/burger_name/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
-
-    console.log("condition", condition);
-
-    burger.updateOne({
-        burger_name: req.body.burger_name
-    }, condition, function (result) {
-        if (result.changedRows == 0) {
-            // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
+    Burger.update({ burger_name: req.body.burger_name }, {
+        where: {
+            id: req.params.id
         }
+    }).then(function (results) {
+        console.log(results);
+        if (results == 0) res.status(404).end();
+        else res.status(200).end();
+
+        // res.json(results);
     });
 });
 
+
+
+/**
+ * create a new burger
+ * @function
+ * @name post/api/burgers
+ * @memberof module:controllers/burgers_controller
+ * @param {string} path - /api/burgers
+ * @returns {object} Returns unique id:insertID key/value pair of record added to to MySQL
+ */
+router.post("/api/burgers", function (req, res) {
+    console.log("Burger Data:");
+    console.log(req.body);
+    Burger.create({
+        burger_name: req.body.burger_name,
+        devoured: req.body.devoured
+    }).then(function (results) {
+        res.json({ id: results.insertId });
+    });
+});
 
 
 /**
@@ -126,21 +131,15 @@ router.put("/api/burger_name/:id", function (req, res) {
  * @returns {200 | 404} Returns status of request
  */
 router.delete("/api/burgers/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
-
-    console.log("condition", condition);
-
-    burger.deleteOne({
-    }, condition, function (result) {
-        if (result.affectedRows === 0) {
-            // If no rows were changed, then the ID must not exist, so 404
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
+    console.log("Burger ID:");
+    console.log(req.params.id);
+    Burger.destroy({
+        where: {
+            id: req.params.id
         }
+    }).then(function () {
+        res.status(200).end();
     });
 });
 
-
-// Export routes for server.js to use.
 module.exports = router;
