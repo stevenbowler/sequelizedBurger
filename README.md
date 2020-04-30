@@ -47,6 +47,7 @@ Directory structure is as follows:
 .
 ├── config
 │   └── connection.js
+│   └── config.json
 │ 
 ├── controllers
 │   └── burgers_controller.js

@@ -21,12 +21,14 @@ To run this file, we do the following in our Terminal:
 */
 
 -- Drops the task_saver_db if it already exists --
+
 DROP DATABASE IF EXISTS sequelizedBurgers_db;
 
 -- Create the database task_saver_db and specified it for use.
 CREATE DATABASE sequelizedBurgers_db;
 
 USE sequelizedBurgers_db;
+-- USE sh6sxzbul0bhs2i4;
 
 -- Create the table tasks.
 CREATE TABLE burgers
@@ -36,6 +38,8 @@ CREATE TABLE burgers
   burger_name varchar
   (255) NOT NULL,
   devoured boolean,
+  createdAt datetime,
+  updatedAt datetime,
   PRIMARY KEY
   (id)
 );
