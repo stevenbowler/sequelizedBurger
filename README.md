@@ -23,6 +23,11 @@ To use the app click [burger](https://protected-hollows-73924.herokuapp.com/)
 
 
 ### Program Documentation
+Program requires setup of Heroku Environment variable process.env.JAWSDB_URL from Heroku CLI
+````
+heroku config:set JAWSDB_URL=your_heroku_jawsdb_url
+````
+
 App executes the MVC software pattern in the following manner:
 1. Initiate _*`server.js`*_
 2. Serve _*`index.handlebars`*_ with current burgers table from burgers_db in MySQL/Heroku JawsDB.
