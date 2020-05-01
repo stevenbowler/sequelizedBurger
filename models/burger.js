@@ -9,7 +9,7 @@
 // =============================================================
 
 /**  
- * Sequelize (capital) references the standard library 
+ * Sequelize (capital) references the standard library {@link https://www.npmjs.com/package/sequelize} 
  * @name Sequelize
  * @external
 */

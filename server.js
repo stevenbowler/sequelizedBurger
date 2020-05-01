@@ -6,8 +6,8 @@
  * @requires module:controllers/burgers_controller
  */
 
-/**
- * ExpressJS package
+/** 
+ * ExpressJS package {@link https://www.npmjs.com/package/expressjs}
  * @name express
  * @external
  */
@@ -42,7 +42,7 @@ app.use(express.static("public"));
 
 
 /**
- * handlebars
+ * Express Handlebars {@link https://www.npmjs.com/package/express-handlebars}
  * @name exphbs
  * @external
  */
