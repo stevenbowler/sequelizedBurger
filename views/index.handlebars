@@ -36,23 +36,29 @@
       </ul>
     </div>
   </div>
+  <div class="row">
+    <div class="col-12 col-lg">
+      <h2 class="animated zoomIn delay-0s">Create a Burger</h2>
+      <form id="createburger" class="button-size animated zoomInRight delay-0s">
+        <textarea type="text" name="burger"></textarea>
+        <button type="submit" class="btn btn-primary">Create Burger!</button>
+      </form>
 
-  <h2 class="animated zoomIn delay-0s">Create a Burger</h2>
-  <form id="createburger" class="button-size animated zoomInRight delay-0s">
-    <textarea type="text" name="burger"></textarea>
-    <button type="submit" class="btn btn-primary">Create Burger!</button>
-  </form>
-
-  <h2 class="animated zoomIn delay-0s">Update a Burger</h2>
-  <form id="updateburger" class="button-size animated zoomInLeft delay-0s">
-    <select name="id">
-      {{#each burgers}}
-      <option value="{{this.id}}">{{this.burger_name}}</option>
-      {{/each}}
-    </select>
-    <textarea type="text" name="burger" placeholder="burger"></textarea>
-    <button type="submit" class="btn btn-secondary">Update burger!</button>
-  </form>
+      <h2 class="animated zoomIn delay-0s">Update a Burger</h2>
+      <form id="updateburger" class="button-size animated zoomInLeft delay-0s">
+        <select name="id">
+          {{#each burgers}}
+          <option value="{{this.id}}">{{this.burger_name}}</option>
+          {{/each}}
+        </select>
+        <textarea type="text" name="burger" placeholder="burger"></textarea>
+        <button type="submit" class="btn btn-secondary">Update burger!</button>
+      </form>
+    </div>
+    <div class="col-12 col-lg">
+      <img src="/assets/img/burger2.png" alt="no burger here" height="100px">
+    </div>
+  </div>
 </div>
 
 {{!-- Change devour from false to true requires update --}}

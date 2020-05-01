@@ -2,7 +2,9 @@
 /**
  * @module
  * @requires express
+ * @see {@link https://www.npmjs.com/package/express}
  * @requires module:models/burger
+ * @todo line 54, why can't pass hbsObject, currently using JSON.parse(JSON.stringify(hbsObject)), fix.
  */
 
 // *********************************************************************************

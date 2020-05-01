@@ -11,6 +11,7 @@
 /**  
  * Sequelize (capital) references the standard library 
  * @name Sequelize
+ * @external
 */
 var Sequelize = require("sequelize");
 
