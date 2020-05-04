@@ -7,7 +7,7 @@ This is a restaurant order-tracking app that enables the customer to _*`create`*
 
 ### User Documentation
 
-First, watch this video: _*[burger](https://drive.google.com/file/d/1aaV586emAS9yznHqatfBParYsV_apiiC/view)*_.
+First, watch this video: _*[burger](https://drive.google.com/file/d/1LUDGtekKEj_6oiXhJrVoSqt1gZtwY8Tg/view)*_.
 
 Then, read the instructions and see the clips below
 
