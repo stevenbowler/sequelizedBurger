@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: models/oldBurger.js</title>
+    <title>JSDoc: Source: models/oldburger.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: models/oldBurger.js</h1>
+    <h1 class="page-title">Source: models/oldburger.js</h1>
 
     
 
@@ -29,69 +29,87 @@
             <pre class="prettyprint source linenums"><code>//@ts-check
 /**
  * @module
- * @requires module:config/orm
+ * @requires sequelize
+ * @requires module:config/connection
  */
+
+// Dependencies
+// =============================================================
+
+/**  
+ * Sequelize (capital) references the standard library {@link https://www.npmjs.com/package/sequelize} 
+ * @name Sequelize
+ * @external
+*/
+const { Sequelize, Op, Model, DataTypes } = require("sequelize");
+
+
+/** 
+ * sequelize (lowercase) references my connection to the DB.
+ * @name sequelize
+*/
+var sequelize = require("../config/connection.js");
+
 
 /**
- * @name orm
- */
-var orm = require("../config/orm");
+ * Creates a "Book" model that matches up with DB
+ * @namespace Burger
+ *  */
+var Burger = sequelize.define("sequelizedburgers", {
+    burger_name: DataTypes.STRING,
+    devoured: { type: DataTypes.BOOLEAN }
+    // userId: Sequelize.DataTypes.INTEGER,
+});
+
 
 /**
- * @namespace burger
- * @memberof module:models/burger
+ * Creates a User model for customers/users
+ * @namespace User
  */
-var burger = {
-    /**
-     * Selects all records in table burgers and returns them
-     * @memberof module:models/burger.burger
-     * @param {function} cb Callback with response from MySQL query 
-     */
-    selectAll: function (cb) {
-        orm.selectAll("burgers", function (response) {
-            cb(response);
-        });
-    },
-    /**
-     * Inserts one record in table, the variables cols and vals are arrays. 
-     * @memberof module:models/burger.burger
-     * @param {Array&lt;string>} cols Array of columns in burgers table
-     * @param {Array&lt;string>} vals Array of values in burgers table
-     * @param {function} cb Callback with response from MySQL query 
-     */
-    insertOne: function (cols, vals, cb) {
-        orm.insertOne("burgers", cols, vals, function (response) {
-            cb(response);
-        });
-    },
-    /**
-     * Updates one record in table in columns specified based on condition
-     * @memberof module:models/burger.burger
-     * @param {object} objColVals Object with column name/key and value to be updated
-     * @param {string} condition String that follows "WHERE" in MySQL query
-     * @param {function} cb Callback with response from MySQL query 
-     */
-    updateOne: function (objColVals, condition, cb) {
-        orm.updateOne("burgers", objColVals, condition, function (response) {
-            cb(response);
-        });
-    },
-    /**
-     * Delete one record from table where condition is met
-     * @memberof module:models/burger.burger
-     * @param {object} objColVals Object with column name/key and value to be deleted
-     * @param {string} condition String that follows "WHERE" in MySQL query
-     * @param {function} cb Callback with response from MySQL query 
-     */
-    deleteOne: function (objColVals, condition, cb) {
-        orm.deleteOne("burgers", objColVals, condition, function (response) {
-            cb(response);
-        });
-    }
-};
+var User = sequelize.define("user", {
+    // Giving the User model a name of type STRING
+    username: { type: DataTypes.STRING, validate: { len: [1, 25] } },
+});
 
-// Export the database functions for the controller (catsController.js).
-module.exports = burger;
+
+/**
+ * Creates many to one association between User and Burgers, User can have many Burgers ...
+ * @function
+ * @name .hasMany
+ * @memberof module:models/oldburger~User
+ * @param {Object} Burger
+ */
+User.hasMany(Burger, {
+    as: "sequelizedburger",
+    // foreignKey: "userId",
+    // sourceKey: "userId",
+    // onDelete: "cascade"
+});
+
+
+
+/**
+ * Creates many to one association between User and Burgers, User can have many Burgers ...
+ * @function
+ * @name .belongsTo
+ * @memberof module:models/oldburger~Burger
+ * @param {Object} User
+ */
+Burger.belongsTo(User, {
+    foreignKey: {
+        name: "userId"
+        // allowNull: false
+    },
+    targetKey: "id"
+});
+
+
+Burger.sync();
+User.sync();
+
+
+// Makes the Book Model available for other files (will also create a table)
+module.exports = { Burger, User };
 </code></pre>
         </article>
     </section>
@@ -102,13 +120,13 @@ module.exports = burger;
 </div>
 
 <nav>
-    <h2><a href="index.html">sequelizedBurger</a></h2><h3>Modules</h3><ul><li><a href="module-config_oldconnection.html">config/oldconnection</a></li><li><a href="module-config_orm.html">config/orm</a></li><li><a href="module-controllers_burgers_controller.html">controllers/burgers_controller</a></li><li><a href="module-controllers_oldburgers_controller.html">controllers/oldburgers_controller</a></li><li><a href="module-models_oldBurger.html">models/oldBurger</a></li><li><a href="module-public_assets_js_burgers.html">public/assets/js/burgers</a></li><li><a href="module-server.html">server</a></li></ul><h3>Externals</h3><ul><li><a href="external-exphbs.html">exphbs</a></li><li><a href="external-express.html">express</a></li><li><a href="external-mysql.html">mysql</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-config_orm-orm.html">orm</a></li><li><a href="module-models_burger.burger.html">burger</a></li></ul><h3>Events</h3><ul><li><a href="module-public_assets_js_burgers.html#.event:deleteburger">deleteburger</a></li><li><a href="module-public_assets_js_burgers.html#.event:devourburger">devourburger</a></li><li><a href="module-public_assets_js_burgers.html#event:createburger">createburger</a></li><li><a href="module-public_assets_js_burgers.html#event:updateburger">updateburger</a></li></ul>
+    <h2><a href="index.html">sequelizedBurger</a></h2><h3>Modules</h3><ul><li><a href="module-config_connection.html">config/connection</a></li><li><a href="module-controllers_burgers_controller.html">controllers/burgers_controller</a></li><li><a href="module-models_oldburger.html">models/oldburger</a></li><li><a href="module-public_assets_js_burgers.html">public/assets/js/burgers</a></li><li><a href="module-server.html">server</a></li></ul><h3>Externals</h3><ul><li><a href="external-exphbs.html">exphbs</a></li><li><a href="external-express.html">express</a></li><li><a href="external-Sequelize.html">Sequelize</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-config_connection-sequelize.html">sequelize</a></li><li><a href="module-models_oldburger-Burger.html">Burger</a></li><li><a href="module-models_oldburger-User.html">User</a></li></ul><h3>Events</h3><ul><li><a href="module-public_assets_js_burgers.html#.event:deleteburger">deleteburger</a></li><li><a href="module-public_assets_js_burgers.html#.event:devourburger">devourburger</a></li><li><a href="module-public_assets_js_burgers.html#event:createburger">createburger</a></li><li><a href="module-public_assets_js_burgers.html#event:updateburger">updateburger</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Thu Apr 30 2020 11:38:24 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon May 04 2020 09:58:54 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

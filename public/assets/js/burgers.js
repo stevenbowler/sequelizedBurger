@@ -73,6 +73,7 @@ $("#createburger").on("submit", function (event) {
     var newBurger = {
         //@ts-ignore
         burger_name: $("#createburger [name=burger]").val().trim(),
+        username: $("#createburger [name=username]").val().trim(),
         devoured: false
     };
 

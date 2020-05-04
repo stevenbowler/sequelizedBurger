@@ -53,13 +53,19 @@ var express = require("express");
  */
 var router = express();
 
+
 /**
- * @name Burger
+ * call in sequelize database models
+ * @name db
  */
-var Burger = require("../models/burger.js");
+// var db = require("../models");
+var { Burger, User } = require("../models/oldburger");
 
 // Routes
 // =============================================================
+
+
+
 
 
 
@@ -75,10 +81,15 @@ var Burger = require("../models/burger.js");
  * @returns {URL} Returns url to index.handlebars
  */
 router.get("/", function (req, res) {
-    Burger.findAll({}).then(function (results) {
+    Burger.findAll({ include: User }).then(function (results) {
+        // only with sequelize, it restates devoured from boolean to string, fails handlebars conditional render.
+        for (var i = 0; i &lt; results.length; i++) if (results[i].devoured == 0) results[i].devoured = false;
         var hbsObject = {
             burgers: results
         };
+        console.log('results');
+        // console.log(results[6].user.username);
+        // console.log(`devoured: ${results[1].devoured}`);
         res.render("index", JSON.parse(JSON.stringify(hbsObject)));  // res.render("index", hbsObject); // doesn't work
         // res.render("index", hbsObject); // doesn't work was used in non-sequelized version
     });
@@ -133,7 +144,7 @@ router.put("/api/burger_name/:id", function (req, res) {
 
 
 /**
- * create a new burger
+ * create a new burger and user
  * @function
  * @name post/api/burgers
  * @memberof module:controllers/burgers_controller
@@ -143,11 +154,24 @@ router.put("/api/burger_name/:id", function (req, res) {
 router.post("/api/burgers", function (req, res) {
     console.log("Burger Data:");
     console.log(req.body);
-    Burger.create({
-        burger_name: req.body.burger_name,
-        devoured: req.body.devoured
-    }).then(function (results) {
-        res.json({ id: results.insertId });
+    // create user record, before creating burger order record
+    User.findOrCreate({
+        where: {
+            username: req.body.username
+        },
+        defaults: { username: req.body.username }
+    }).then(function (userResults) {
+        // if found or created user, then create burger with id
+        // console.log(userResults[0].id);
+        Burger.create({
+            burger_name: req.body.burger_name,
+            userId: userResults[0].id,
+            devoured: req.body.devoured
+            // 
+        }).then(function (burgerResults) {
+            res.json({ id: burgerResults.id });
+        });
+
     });
 });
 
@@ -183,13 +207,13 @@ module.exports = router;
 </div>
 
 <nav>
-    <h2><a href="index.html">sequelizedBurger</a></h2><h3>Modules</h3><ul><li><a href="module-config_connection.html">config/connection</a></li><li><a href="module-controllers_burgers_controller.html">controllers/burgers_controller</a></li><li><a href="module-models_burger.html">models/burger</a></li><li><a href="module-public_assets_js_burgers.html">public/assets/js/burgers</a></li><li><a href="module-server.html">server</a></li></ul><h3>Externals</h3><ul><li><a href="external-exphbs.html">exphbs</a></li><li><a href="external-express.html">express</a></li><li><a href="external-Sequelize.html">Sequelize</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-config_connection-sequelize.html">sequelize</a></li><li><a href="module-models_burger-Burger.html">Burger</a></li></ul><h3>Events</h3><ul><li><a href="module-public_assets_js_burgers.html#.event:deleteburger">deleteburger</a></li><li><a href="module-public_assets_js_burgers.html#.event:devourburger">devourburger</a></li><li><a href="module-public_assets_js_burgers.html#event:createburger">createburger</a></li><li><a href="module-public_assets_js_burgers.html#event:updateburger">updateburger</a></li></ul>
+    <h2><a href="index.html">sequelizedBurger</a></h2><h3>Modules</h3><ul><li><a href="module-config_connection.html">config/connection</a></li><li><a href="module-controllers_burgers_controller.html">controllers/burgers_controller</a></li><li><a href="module-models_oldburger.html">models/oldburger</a></li><li><a href="module-public_assets_js_burgers.html">public/assets/js/burgers</a></li><li><a href="module-server.html">server</a></li></ul><h3>Externals</h3><ul><li><a href="external-exphbs.html">exphbs</a></li><li><a href="external-express.html">express</a></li><li><a href="external-Sequelize.html">Sequelize</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-config_connection-sequelize.html">sequelize</a></li><li><a href="module-models_oldburger-Burger.html">Burger</a></li><li><a href="module-models_oldburger-User.html">User</a></li></ul><h3>Events</h3><ul><li><a href="module-public_assets_js_burgers.html#.event:deleteburger">deleteburger</a></li><li><a href="module-public_assets_js_burgers.html#.event:devourburger">devourburger</a></li><li><a href="module-public_assets_js_burgers.html#event:createburger">createburger</a></li><li><a href="module-public_assets_js_burgers.html#event:updateburger">updateburger</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri May 01 2020 12:03:16 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon May 04 2020 09:58:54 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

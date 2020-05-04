@@ -12,18 +12,23 @@ First, watch this video: _*[burger](https://drive.google.com/file/d/1aaV586emAS9
 Then, read the instructions and see the clips below
 
 To use the app click [burger](https://protected-hollows-73924.herokuapp.com/)
-1. To create a burger: Under the _*`Create a Burger`*_ heading, enter the name of the burger you desire in the text box and click the  _*`Create Burger`*_ button.
-2. The name of the burger just created will be read into the bottom of the _*`To Be Devoured`*_ list.
-3. To update the name of the burger: Under the _*`Update a Burger`*_ heading,
-    1. From the dropdown: select the burger name you wish to update
+1. To create a burger, under the _*`Create a Burger Order`*_ heading: 
+    1. Enter the burger order you desire in the text box _*`enter burger order`*_.
+    2. Enter the customer name in the _*`enter customer name`*_ field. 
+    3. Click the  _*`Create Order`*_ button.
+2. The burger order just created will be read into the bottom of the _*`To Be Delivered`*_ list.
+3. To update a burger order, under the _*`Update a Burger Order`*_ heading:
+    1. From the dropdown: select the burger order to update
     2. In the textbox to the right of the dropdown: type in the new burger name.
-    3. Click the _*`Update a Burger`*_ button.
-4. To update the status of any burger from _*`To Be Devoured`*_ to _*`Devoured`*_: click the _*`Devour Burger`*_ button to the right.
-5. To delete the burger: Under the _*`Devoured`*_ heading: click the _*`Delete Burger`*_ button to the right of the burger to be deleted.
+    3. Click the _*`Update Order`*_ button.
+4. To update the status of any burger order from _*`To Be Delivered`*_ to _*`Delivered`*_: click the _*`Deliver Order`*_ button to the right of the order.
+5. To delete the burger order: Under the _*`Delivered`*_ heading: click the _*`Order Complete`*_ button to the right of the burger order to be deleted.
 
 
 ### Program Documentation
-Program requires setup of Heroku Environment variable process.env.JAWSDB_URL from Heroku CLI
+Deploy app thru [Heroku](https://www.heroku.com) with JawsDB.  [Watch this video](https://www.youtube.com/watch?v=btG3SkoNOLU&feature=youtu.be&list=PLOFmg4xbN_TPrB6w4rThsFanVxJI_SfER), note string of JAWSDB_URL, see below.
+
+Program requires setting Heroku Environment variable process.env.JAWSDB_URL from Heroku CLI
 ````
 heroku config:set JAWSDB_URL=your_heroku_jawsdb_url
 ````
@@ -33,12 +38,11 @@ App executes the MVC software pattern in the following manner:
 2. Serve _*`index.handlebars`*_ with current burgers table from burgers_db in MySQL/Heroku JawsDB.
 3. User onclick event triggers one of four actions: Create Burger, Update Burger, Devour Burger, Delete Burger. See module [public/assets/js/burgers](https://stevenbowler.github.io/burger/docs/module-public_assets_js_burgers.html).  This makes the AJAX call with the appropriate route.
 4. _*`public/assets/js/burgers`*_ JQuery based user input module requires [controllers/burgers_controller](https://stevenbowler.github.io/burger/docs/module-controllers_burgers_controller.html).
-5. _*`controllers/burgers_controller`*_ module is the router that requires [models/burger](https://stevenbowler.github.io/burger/docs/module-models_burger.html) to make _*`burger`*_ specific calls to _*sequelize*_.  
+5. _*`controllers/burgers_controller`*_ module is the router that requires [models/oldburger](https://stevenbowler.github.io/burger/docs/module-models_oldburger.html) to make _*`burger`*_ specific calls to _*sequelize*_.  
 
 
 Main module documentation and references can be accessed [here](https://stevenbowler.github.io/sequelizedBurger/docs/index.html).  Global scope variables can be accessed [here](https://stevenbowler.github.io/sequelizedBurger/docs/global.html), 
 
-Deploy app thru [Heroku](https://www.heroku.com) with JawsDB.  [Watch this video](https://www.youtube.com/watch?v=btG3SkoNOLU&feature=youtu.be&list=PLOFmg4xbN_TPrB6w4rThsFanVxJI_SfER).
 
 
 Directory structure is as follows:

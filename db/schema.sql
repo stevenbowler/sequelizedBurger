@@ -1,3 +1,7 @@
+--  DON'T USE THIS, USE THE SEQUELIZE MODEL ONLY
+--  DON'T USE THIS, USE THE SEQUELIZE MODEL ONLY
+--  DON'T USE THIS, USE THE SEQUELIZE MODEL ONLY
+--  DON'T USE THIS, USE THE SEQUELIZE MODEL ONLY
 /*
 
 To run this file, we do the following in our Terminal:
@@ -27,11 +31,12 @@ DROP DATABASE IF EXISTS sequelizedBurgers_db;
 -- Create the database task_saver_db and specified it for use.
 CREATE DATABASE sequelizedBurgers_db;
 
-USE sequelizedBurgers_db;
+USE burgers_db;
 -- USE sh6sxzbul0bhs2i4;
 
 -- Create the table tasks.
-CREATE TABLE burgers
+--  DON'T USE THIS, USE THE SEQUELIZE MODEL ONLY
+CREATE TABLE sequelizedBurgers
 (
   id int NOT NULL
   AUTO_INCREMENT,
@@ -49,4 +54,7 @@ CREATE TABLE burgers
   -- INSERT INTO movies (movie) VALUES ('get travelling.');
   -- INSERT INTO movies (movie) VALUES ('get a hug from my daughter.');
   SELECT *
-  FROM burgers;
+  FROM sequelizedburgers;
+
+  SELECT *
+  FROM users;

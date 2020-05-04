@@ -37,9 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 // enable json parsing of strings
 app.use(express.json());
 
-// Set root/public as base reference for express
-app.use(express.static("public"));
-
+// var db = require("./models/oldburger");
 
 /**
  * Express Handlebars {@link https://www.npmjs.com/package/express-handlebars}
@@ -66,7 +64,9 @@ app.use(routes);
 
 
 // initiate server so that it can begin listening to client requests.
+// db.sequelize.sync({ force: true }).then(function () {
 app.listen(PORT, function () {
     // Log (server-side) when our server has started
     console.log("Server listening on: http://localhost:" + PORT);
 });
+// });

@@ -10,7 +10,7 @@
  * @name Sequelize
  * @type {*}
  */
-var Sequelize = require("sequelize");
+var { Sequelize } = require("sequelize");
 
 /**
  * @namespace sequelize

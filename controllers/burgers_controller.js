@@ -25,13 +25,19 @@ var express = require("express");
  */
 var router = express();
 
+
 /**
- * @name Burger
+ * call in sequelize database models
+ * @name db
  */
-var Burger = require("../models/burger.js");
+// var db = require("../models");
+var { Burger, User } = require("../models/oldburger");
 
 // Routes
 // =============================================================
+
+
+
 
 
 
@@ -47,10 +53,15 @@ var Burger = require("../models/burger.js");
  * @returns {URL} Returns url to index.handlebars
  */
 router.get("/", function (req, res) {
-    Burger.findAll({}).then(function (results) {
+    Burger.findAll({ include: User }).then(function (results) {
+        // only with sequelize, it restates devoured from boolean to string, fails handlebars conditional render.
+        for (var i = 0; i < results.length; i++) if (results[i].devoured == 0) results[i].devoured = false;
         var hbsObject = {
             burgers: results
         };
+        console.log('results');
+        // console.log(results[6].user.username);
+        // console.log(`devoured: ${results[1].devoured}`);
         res.render("index", JSON.parse(JSON.stringify(hbsObject)));  // res.render("index", hbsObject); // doesn't work
         // res.render("index", hbsObject); // doesn't work was used in non-sequelized version
     });
@@ -105,7 +116,7 @@ router.put("/api/burger_name/:id", function (req, res) {
 
 
 /**
- * create a new burger
+ * create a new burger and user
  * @function
  * @name post/api/burgers
  * @memberof module:controllers/burgers_controller
@@ -115,11 +126,24 @@ router.put("/api/burger_name/:id", function (req, res) {
 router.post("/api/burgers", function (req, res) {
     console.log("Burger Data:");
     console.log(req.body);
-    Burger.create({
-        burger_name: req.body.burger_name,
-        devoured: req.body.devoured
-    }).then(function (results) {
-        res.json({ id: results.insertId });
+    // create user record, before creating burger order record
+    User.findOrCreate({
+        where: {
+            username: req.body.username
+        },
+        defaults: { username: req.body.username }
+    }).then(function (userResults) {
+        // if found or created user, then create burger with id
+        // console.log(userResults[0].id);
+        Burger.create({
+            burger_name: req.body.burger_name,
+            userId: userResults[0].id,
+            devoured: req.body.devoured
+            // 
+        }).then(function (burgerResults) {
+            res.json({ id: burgerResults.id });
+        });
+
     });
 });
 
